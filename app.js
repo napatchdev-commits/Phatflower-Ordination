@@ -83,8 +83,8 @@ async function loadCatalog() {
         const data = await response.json();
         
         if (data && data.status === 'success' && data.result) {
-            // Filter catalog to show only ordination items (eventType === 'ordination')
-            const fetchedCatalog = (data.result.catalog || []).filter(item => item !== null && item.eventType === 'ordination');
+            // Filter catalog to show only ordination items (eventType === 'ordination') and showOnCatalog !== false
+            const fetchedCatalog = (data.result.catalog || []).filter(item => item !== null && item.eventType === 'ordination' && item.showOnCatalog !== false);
             state.catalog = fetchedCatalog.length > 0 ? fetchedCatalog : DEFAULT_CATALOG;
             
             // Filter packages containing ordination eventType or keywords safely
