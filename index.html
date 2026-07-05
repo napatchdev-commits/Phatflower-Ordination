@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -54,6 +54,59 @@
                     <!-- Rendered dynamically from app.js -->
                 </div>
             </div>
+
+
+            <!-- SECTION: Gallery (ผลงานของเราแยกตามหมวดหมู่) -->
+            <div id="gallery-section-wrapper" style="display: none; margin-bottom: 40px;">
+                <div class="section-title">
+                    <i class="fa-solid fa-images"></i>
+                    <span>ผลงานจัดดอกไม้ของเรา (Our Portfolio Gallery)</span>
+                </div>
+                
+                <!-- Category Cards Selection View -->
+                <div id="gallery-categories-selection" class="gallery-cats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <!-- Card 1: ชุดพิธีสงฆ์ -->
+                    <div class="gallery-cat-card" onclick="showGalleryCategory('ชุดพิธีสงฆ์')">
+                        <i class="fa-solid fa-dharmachakra"></i>
+                        <h3>ชุดพิธีสงฆ์</h3>
+                        <p>คลิกเข้าชมรูปภาพแกลลอรีชุดพิธีสงฆ์</p>
+                    </div>
+                    
+                    <!-- Card 2: ฉากวางเครื่องบวช -->
+                    <div class="gallery-cat-card" onclick="showGalleryCategory('ฉากวางเครื่องบวช')">
+                        <i class="fa-solid fa-gifts"></i>
+                        <h3>ฉากวางเครื่องบวช</h3>
+                        <p>คลิกเข้าชมรูปภาพแกลลอรีฉากวางเครื่องบวช</p>
+                    </div>
+
+                    <!-- Card 3: ฉากปลงผม/อาบน้ำนาค -->
+                    <div class="gallery-cat-card" onclick="showGalleryCategory('ฉากปลงผม/อาบน้ำนาค')">
+                        <i class="fa-solid fa-water"></i>
+                        <h3>ฉากปลงผม/อาบน้ำนาค</h3>
+                        <p>คลิกเข้าชมรูปภาพแกลลอรีฉากปลงผม/อาบน้ำนาค</p>
+                    </div>
+
+                    <!-- Card 4: ฉากถ่ายรูปงานเลี้ยง -->
+                    <div class="gallery-cat-card" onclick="showGalleryCategory('ฉากถ่ายรูปงานเลี้ยง')">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                        <h3>ฉากถ่ายรูปงานเลี้ยง</h3>
+                        <p>คลิกเข้าชมรูปภาพแกลลอรีฉากถ่ายรูปงานเลี้ยง</p>
+                    </div>
+                </div>
+                
+                <!-- Category Images List View (Hidden initially) -->
+                <div id="gallery-category-images-view" style="display: none; background: #fff; padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 id="gallery-category-title" style="margin: 0;"></h3>
+                        <button class="gallery-back-btn" onclick="closeGalleryCategoryView()"><i class="fa-solid fa-arrow-left"></i> ย้อนกลับ</button>
+                    </div>
+                    
+                    <div class="gallery-grid" id="gallery-container">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+
 
             <div class="section-title">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -151,6 +204,12 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <!-- Lightbox Modal for Gallery Images -->
+    <div class="lightbox" id="gallery-lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
     </div>
 
     <!-- Application Script -->
