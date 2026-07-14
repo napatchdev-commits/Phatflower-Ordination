@@ -84,8 +84,8 @@ async function loadCatalog() {
         const data = await response.json();
         
         if (data && data.status === 'success' && data.result) {
-            // Filter catalog to show only ordination items (eventType === 'ordination') and showOnCatalog !== false
-            const fetchedCatalog = (data.result.catalog || []).filter(item => item !== null && item.eventType === 'ordination' && item.showOnCatalog !== false);
+            // Filter catalog to show only ordination items (eventType === 'ordination')
+            const fetchedCatalog = (data.result.catalog || []).filter(item => item !== null && item.eventType === 'ordination');
             state.catalog = fetchedCatalog.length > 0 ? fetchedCatalog : DEFAULT_CATALOG;
             
             // Filter packages containing ordination eventType or keywords safely
@@ -125,7 +125,6 @@ async function loadCatalog() {
             state.catalog = DEFAULT_CATALOG;
             state.packages = DEFAULT_PACKAGES;
             state.promotions = DEFAULT_PROMOTIONS;
-        state.gallery = [];
             state.gallery = [];
         }
     } catch (error) {
@@ -143,7 +142,8 @@ async function loadCatalog() {
     initClientGallery();
 }
 
-// Render dynamic filter buttons based on what categories exist in catalog
+// Render dynamic filter buttons
+ based on what categories exist in catalog
 function renderFilterButtons() {
     const filterContainer = document.getElementById('category-filter');
     if (!filterContainer) return;
