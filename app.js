@@ -1,4 +1,4 @@
-﻿// PhatFlowers Interactive Catalog - Client Application Logic
+// PhatFlowers Interactive Catalog - Client Application Logic
 
 const GOOGLE_SHEETS_DATABASE_URL = "https://script.google.com/macros/s/AKfycbxl8B41auvkj7uOhgbK2IBnIWlzfpGmz8Q45VqLlS56Oy9cmcq2VIfL2Ch_6_E-UbVy/exec";
 
@@ -142,13 +142,6 @@ async function loadCatalog() {
     initClientGallery();
 }
 
-// Render dynamic filter buttons
- based on what categories exist in catalog
-function renderFilterButtons() {
-    const filterContainer = document.getElementById('category-filter');
-    if (!filterContainer) return;
-
-    // Get unique categories found in catalog
     const activeCats = new Set();
     state.catalog.forEach(item => {
         activeCats.add(getItemCategory(item.description).name);
